@@ -3,34 +3,38 @@ import java.util.Scanner;
 public class SiguienteSegundo {
     public static void main(String[] args) {
 
-        int horas;
-        int minutos;
-        int segundos;
-        int relleno=0;
+        int horas = 0;
+        int minutos = 0;
+        int segundos = 0;
 
-        Scanner scan=new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
         System.out.print("> ");
-        horas=scan.nextInt();
+        horas = scan.nextInt();
+
         System.out.print("> ");
-        minutos=scan.nextInt();
+        minutos= scan.nextInt();
+
         System.out.print("> ");
         segundos=scan.nextInt();
 
-        segundos+=1;
+        segundos++;
 
-        if(segundos>59){
-            segundos=0;
-            minutos+=1;
-        }
-        if(minutos>59){
-            minutos=0;
-            horas+=1;
-        }
-        if(horas==24) {
-            horas = 0;
+        if(segundos >= 60){
+            segundos = 0;
+            minutos++;
+
+            if(minutos >= 60){
+                minutos = 0;
+                horas++;
+
+                if(horas >= 24){
+                    horas = 0;
+                }
+            }
         }
 
-        System.out.println(horas+":"+minutos+":"+segundos);
+        System.out.println(((horas > 10) ? horas : "0" + horas) + ":" + ((minutos > 10) ? minutos : "0" + minutos) + ":" + ((segundos > 10) ? segundos : "0" + segundos));
     }
+
 }
